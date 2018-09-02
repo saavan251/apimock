@@ -4,13 +4,23 @@ import routes from './api';
 const Hapi = require('hapi');
 
 // Create a server with a host and port
-const server = Hapi.server({ 
-    host: 'localhost', 
+const server = Hapi.server({
+    host: 'localhost',
     port: 8001
 });
 
 // Add the route
-server.route(routes);
+for (var route in routes){
+server.route(routes[route]);
+}
+/*server.route({
+    method: 'GET',
+    path: '/',
+    handler: function (request, h) {
+
+        return 'Hello!';
+    }
+});*/
 
 // Start the server
 async function start() {

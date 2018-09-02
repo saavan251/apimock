@@ -1,4 +1,7 @@
 export let hello = (request, h) => {
-  return 'Hello, world';
-};
+  const name = request.query.name ?
+            encodeURIComponent(request.query.name) :
+            'world';
 
+        return `Hello ${name}!`;
+};
